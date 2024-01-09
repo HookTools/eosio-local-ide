@@ -1,0 +1,11 @@
+.show-close:hover {
+  p {
+    display: none;
+  }
+  img {
+    display: block !important;
+  }
+}
+.show-close {
+  min-width: 20px;
+}

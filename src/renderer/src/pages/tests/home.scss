@@ -1,0 +1,17 @@
+.first-div {
+  border-right: 0.5px solid rgba(255, 255, 255, 0.6);
+  background: #2f2f2f;
+  position: relative;
+  .width-change-btn {
+    background: none;
+    border: none;
+
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    cursor: ew-resize;
+  }
+}

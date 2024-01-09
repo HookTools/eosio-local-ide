@@ -1,0 +1,11 @@
+.navbar-bar-icons {
+  img:first-child {
+    opacity: 0.2;
+    transition: 200ms;
+  }
+}
+.navbar-bar-icons:hover {
+  img:first-child {
+    opacity: 1;
+  }
+}

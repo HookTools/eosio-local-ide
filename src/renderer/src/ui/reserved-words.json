@@ -1,0 +1,18 @@
+[
+  { "name": "require_auth", "description": "Users in the system" },
+  { "name": "emplace", "description": "" },
+  { "name": "modify", "description": "" },
+  { "name": "ACTION", "description": "Users in the system" },
+  { "name": "TABLE", "description": "Users in the system" },
+  { "name": "get_self", "description": "Users in the system" },
+  { "name": "get_self()", "description": "Users in the system" },
+  { "name": "find", "description": "Users in the system" },
+  { "name": "vector", "description": "Users in the system" },
+  { "name": "find", "description": "Users in the system" },
+  { "name": "require_find", "description": "Users in the system" },
+  { "name": "symbol", "description": "Users in the system" },
+  { "name": "check", "description": "Users in the system" },
+  { "name": "asset", "description": "Users in the system" },
+  { "name": "find", "description": "Users in the system" },
+  { "name": "find", "description": "Users in the system" }
+]

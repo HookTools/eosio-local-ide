@@ -1,0 +1,139 @@
+{
+  "name": "hook-ide",
+  "version": "1.0.0",
+  "description": "Local EOSIO-IDE",
+  "main": "out/main/index.js",
+  "author": "hook.tools",
+  "homepage": "https://www.hook.tools",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "start": "electron-forge preview",
+    "dev": "electron-vite build && electron-vite dev",
+    "build": "electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:win": "electron-vite build && electron-builder --win --config",
+    "build:mac": "electron-vite build && electron-builder --mac --config",
+    "build:linux": "electron-vite build && electron-builder --linux --config",
+    "test": "ts-mocha /Users/nikko/Desktop/github/github/EOSIO/smartcontracts/eosio.wrap/tests/test.ts"
+  },
+  "permissions": [
+    "net",
+    "protocol",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "dependencies": {
+    "@electron-toolkit/preload": "^2.0.0",
+    "@electron-toolkit/utils": "^1.0.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/joy": "^5.0.0-beta.2",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@types/mocha": "^10.0.4",
+    "@types/node": "^18.16.19",
+    "ace-builds": "^1.23.4",
+    "adm-zip": "^0.5.10",
+    "anchor-link": "^3.5.1",
+    "anchor-link-browser-transport": "^3.5.1",
+    "archiver": "^6.0.1",
+    "axios": "^1.5.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.3.0",
+    "eosio-testify": "^0.0.6",
+    "eosjs": "^22.1.0",
+    "fs-extra": "^11.1.1",
+    "mobx": "^6.10.0",
+    "mobx-react-lite": "^4.0.3",
+    "mocha": "^10.2.0",
+    "node-pty": "^1.0.0",
+    "react-ace": "^10.1.0",
+    "react-hook-form": "^7.45.4",
+    "react-router-dom": "^6.14.2",
+    "tailwind-merge": "^1.14.0",
+    "ts-node": "^10.9.1",
+    "unzipper": "^0.10.14",
+    "vite-plugin-svgr": "^3.2.0",
+    "wretch": "^2.6.0",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0",
+    "xterm-addon-web-links": "^0.9.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@electron/notarize": "^1.2.4",
+    "@eslint-kit/eslint-config-base": "^5.0.2",
+    "@eslint-kit/eslint-config-node": "^2.0.0",
+    "@eslint-kit/eslint-config-patch": "^1.0.0",
+    "@eslint-kit/eslint-config-prettier": "^5.0.0",
+    "@eslint-kit/eslint-config-react": "^3.0.0",
+    "@eslint-kit/eslint-config-typescript": "^5.2.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "dotenv": "^16.3.1",
+    "electron": "^24.6.2",
+    "electron-builder": "^24.6.4",
+    "electron-notarize": "^1.2.2",
+    "electron-vite": "^1.0.25",
+    "eslint": "7.32.0",
+    "eslint-plugin-import": "^2.29.1",
+    "postcss": "^8.4.27",
+    "postcss-loader": "^7.3.3",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.69.7",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.2"
+  },
+  "build": {
+    "afterSign": "./notarize.js",
+    "productName": "eosio-ide",
+    "files": [
+      "./out/**/*",
+      "./fonts/**/*",
+      "./smartcontracts/**/*"
+    ],
+    "extraResources": [
+      "./fonts/**/*",
+      "./smartcontracts/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "identity": "3B9AB5D5A865295E592EF6E7F9945D9B3454D47F",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm"
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "hooktools",
+        "repo": "EOSIO-LOCAL-IDE",
+        "releaseType": "draft"
+      }
+    ]
+  }
+}
