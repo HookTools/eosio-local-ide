@@ -300,7 +300,7 @@ const createZIP = async (path_: string) => {
       if (fs.statSync(filePath).isDirectory()) {
         addFolderToZip(filePath, relativePath)
       } else {
-        zip.addFile(path.normalize(relativePath), fs.readFileSync(filePath))
+        zip.addFile(relativePath.replace(`\\`,'/'), fs.readFileSync(filePath))
       }
     })
   }
