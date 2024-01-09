@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Local EOSIO-IDE",
   "main": "out/main/index.js",
-  "author": "hook.tools",
+  "author": {
+    "name": "hook.tools",
+    "email": "hooktoolswax@gmail.com",
+    "url": "https://hook.tools/"
+  },
   "homepage": "https://www.hook.tools",
   "scripts": {
     "format": "prettier --write .",
