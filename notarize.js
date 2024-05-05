@@ -9,7 +9,7 @@ exports.default = async (context) => {
   if (electronPlatformName !== 'darwin') {
     return
   }
-
+  
   await notarize({
     appBundleId: 'com.electron.hook-ide',
     appPath: `${__dirname}/dist/mac-arm64/eosio-ide.app`,
