@@ -3,12 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { electronAPI } from '@electron-toolkit/preload'
 import { contextBridge, dialog } from 'electron'
-
+import fetch from 'node-fetch'
 const { Api, JsonRpc, RpcError, Serialize } = require('eosjs')
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig')
-
-const fetch = (...args) =>
-  import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const { TextDecoder, TextEncoder } = require('util') // node only
 const fs = require('fs')
 const path = require('path')
@@ -209,8 +206,6 @@ const pushTransactionPrivate = async (
 const cleanContract = async (wallet_, rpcURL: string) => {
   const { Api, JsonRpc, RpcError, Serialize } = require('eosjs')
   const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig')
-  const fetch = (...args) =>
-    import('node-fetch').then(({ default: fetch }) => fetch(...args))
   const { TextDecoder, TextEncoder } = require('util') // node only
 
   const wallet = JSON.parse(wallet_)

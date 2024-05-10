@@ -5,8 +5,6 @@ autoUpdater.setFeedURL({
   provider: 'github',
   owner: 'hooktools',
   repo: 'EOSIO-LOCAL-IDE',
-  // url: 'https://example.com/update', // update URL
-  // serverType: 'json', // server TYPE
   releaseType: 'release',
 })
 
@@ -31,7 +29,7 @@ autoUpdater.on('update-downloaded', (info) => {
   const releaseVersion = info.version
   console.log(info)
 
-  const dialogOptions = {
+  const dialogOptions:any = {
     type: 'question',
     buttons: ['Restart', 'Later'],
     title: 'Application Update',

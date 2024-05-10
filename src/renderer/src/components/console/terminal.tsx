@@ -15,10 +15,10 @@ export const Terminaled = ({ height }, props) => {
 
   const initTerminal = () => {
     const term = new Terminal({
-      rendererType: 'canvas', // 渲染类型
+      rendererType: 'canvas', 
       convertEol: true,
-      cursorBlink: true, // 光标闪烁
-      cursorStyle: 'block', // 光标样式
+      cursorBlink: true, 
+      cursorStyle: 'block',
       background: 'none',
     })
 
