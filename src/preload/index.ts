@@ -4,11 +4,11 @@
 import { electronAPI } from '@electron-toolkit/preload'
 import { contextBridge, dialog } from 'electron'
 import fetch from 'node-fetch'
-const { Api, JsonRpc, RpcError, Serialize } = require('eosjs')
-const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig')
-const { TextDecoder, TextEncoder } = require('util') // node only
-const fs = require('fs')
-const path = require('path')
+import { Api, JsonRpc, RpcError, Serialize } from 'eosjs'
+import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
+import { TextDecoder, TextEncoder } from 'util' 
+import fs from 'fs'
+import path from 'path'
 
 const deployPrivate = async (
   abiData: string,
@@ -24,8 +24,8 @@ const deployPrivate = async (
   const api = new Api({
     rpc,
     signatureProvider,
-    textEncoder: new TextEncoder(),
-    textDecoder: new TextDecoder(),
+    textEncoder: new TextEncoder() as any,
+    textDecoder: new TextDecoder() as any,
   })
 
   const actions: any[] = [
@@ -92,8 +92,8 @@ const acceptMsigPrivate = async (msigId: string, wallet_, rpcURL: string) => {
   const api = new Api({
     rpc,
     signatureProvider,
-    textEncoder: new TextEncoder(),
-    textDecoder: new TextDecoder(),
+    textEncoder: new TextEncoder() as any,
+    textDecoder: new TextDecoder() as any,
   })
 
   const actions: any[] = [
@@ -109,7 +109,7 @@ const acceptMsigPrivate = async (msigId: string, wallet_, rpcURL: string) => {
       data: {
         level: { actor: wallet.wallet, permission: 'active' },
         proposal_name: msigId,
-        proposer: 'hookbuilders',
+        proposer: 'hookdeployer',
       },
     },
     {
@@ -124,7 +124,7 @@ const acceptMsigPrivate = async (msigId: string, wallet_, rpcURL: string) => {
       data: {
         executer: wallet.wallet,
         proposal_name: msigId,
-        proposer: 'hookbuilders',
+        proposer: 'hookdeployer',
       },
     },
   ]
@@ -167,8 +167,8 @@ const pushTransactionPrivate = async (
   const api = new Api({
     rpc,
     signatureProvider,
-    textEncoder: new TextEncoder(),
-    textDecoder: new TextDecoder(),
+    textEncoder: new TextEncoder() as any,
+    textDecoder: new TextDecoder() as any,
   })
   const actions: any[] = [
     {
@@ -340,8 +340,8 @@ const getDeployData = async (path_) => {
   const api = new Api({
     rpc,
     signatureProvider,
-    textDecoder: new TextDecoder(),
-    textEncoder: new TextEncoder(),
+    textDecoder: new TextDecoder() as any,
+    textEncoder: new TextEncoder() as any,
   }) //required to submit transactions
 
   const wasmFilePath = `${path_}/${wasmName}`
@@ -368,12 +368,12 @@ const getDeployData = async (path_) => {
   abiJSON = JSON.parse(abiJSON)
   const abiDefinitions = api.abiTypes.get('abi_def')
 
-  abiJSON = abiDefinitions.fields.reduce(
+  abiJSON = abiDefinitions!.fields.reduce(
     (acc, { name: fieldName }) =>
       Object.assign(acc, { [fieldName]: acc[fieldName] || [] }),
     abiJSON,
   )
-  abiDefinitions.serialize(buffer, abiJSON)
+  abiDefinitions!.serialize(buffer, abiJSON)
   let serializedAbiHexString = Buffer.from(buffer.asUint8Array()).toString(
     'hex',
   )

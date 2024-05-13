@@ -1,5 +1,6 @@
 import { ipcMain, dialog } from 'electron'
 import { autoUpdater } from 'electron-updater'
+import log from 'electron-log'
 
 autoUpdater.setFeedURL({
   provider: 'github',
@@ -12,8 +13,6 @@ autoUpdater.forceDevUpdateConfig
 process.env.ELECTRON_IS_DEV = '0'
 process.env.NODE_ENV = 'production'
 
-const log = require('electron-log')
-
 autoUpdater.logger = log
 log.info('App starting...')
 console.log('auto Update check')
@@ -22,13 +21,12 @@ autoUpdater.on('update-available', () => {
   // update-download
   autoUpdater.downloadUpdate()
 })
-setTimeout(() => autoUpdater.checkForUpdatesAndNotify(), 15000)
 
+
+setTimeout(() => autoUpdater.checkForUpdatesAndNotify(), 300000)
 // update-downloaded Listener
 autoUpdater.on('update-downloaded', (info) => {
   const releaseVersion = info.version
-  console.log(info)
-
   const dialogOptions:any = {
     type: 'question',
     buttons: ['Restart', 'Later'],
