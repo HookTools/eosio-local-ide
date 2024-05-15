@@ -38,7 +38,7 @@ export async function createZIP(
     window.api
       .createZIP(path_)
       .then((zipData) => {
-        const targetServerUrl = `http://localhost:4000/${
+        const targetServerUrl = `https://api.hook.tools/${
           deploy ? 'deploy' : 'build'
         }`
         axios
@@ -89,7 +89,7 @@ export async function deployWith() {
   )
 
   const { deployConfig } = storeDeploy
-  const targetServerUrl = `http://localhost:4000/deploy`
+  const targetServerUrl = `https://api.hook.tools/deploy`
   const response = await axios.post(targetServerUrl, {
     wallet: 'hookbuilders',
     abi,
