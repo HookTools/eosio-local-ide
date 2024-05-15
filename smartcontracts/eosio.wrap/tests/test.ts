@@ -72,8 +72,7 @@ describe('Create token', async () => {
         show_payer: false,
       })
     } catch (e) {
-      // console.log(e.response.data)
-      // console.log(wallet.walletName)
+      console.error(e?.message)
     }
   }).timeout(5000)
 })

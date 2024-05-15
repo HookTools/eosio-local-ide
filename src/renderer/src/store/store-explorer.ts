@@ -28,11 +28,10 @@ class Explorer {
       ).post(`v1/chain/get_abi`, {
         account_name: wallet,
       })
-      console.log(response.data.abi)
       this.abi = response.data.abi
       this.wallet = response.data.account_name
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

@@ -201,8 +201,6 @@ class StoreWallet {
           data: {},
         },
       ]
-      console.log(actions)
-
       const result = await session.transact({ actions })
       return result
     })
@@ -211,7 +209,6 @@ class StoreWallet {
   deployContract = async (abiData, wasmData) => {
     let amount
     const { deployModalDataHandler, deployConfig } = storeDeploy
-    console.log(123)
     switch (deployConfig) {
       case 'default':
         amount = 1
@@ -255,7 +252,7 @@ class StoreWallet {
             this.RPC,
           )
         } else if (deployConfig === 'migrate') {
-          deployModalDataHandler(1, 'Build contract...')
+          deployModalDataHandler(1, 'Build contract...', false, amount)
           const data = await deployWith()
           deployModalDataHandler(2, 'Clean contract...')
           await window.api.deployPrivate(

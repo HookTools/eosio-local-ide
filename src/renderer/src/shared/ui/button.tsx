@@ -42,7 +42,6 @@ interface ButtonProps
 const Button: FC<ButtonProps> = observer(
   ({ className, size, variant, children, choose, disabled, ...props }) => {
     const { build } = storeDeploy
-    console.log(disabled)
     return (
       <button
         {...props}

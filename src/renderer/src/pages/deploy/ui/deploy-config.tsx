@@ -15,8 +15,6 @@ export const DeployConfig = observer(() => {
     network,
     changeNetWork,
     wallets,
-    waxMainnetRPC,
-    waxTestnetRPC,
     link,
     wallet,
     setWallet,
@@ -24,10 +22,8 @@ export const DeployConfig = observer(() => {
     setAnchor,
     connect,
     setConnect,
-    cleanContract,
   } = storeWallets
-  console.log(connect)
-  const { deploy, deployConfig, setDeployConfig } = storeDeploy
+  const {  deployConfig, setDeployConfig } = storeDeploy
   const { folders } = storeFolders
   const { deployContract } = storeWallets
   const logout = () => {
@@ -39,7 +35,6 @@ export const DeployConfig = observer(() => {
       }
     })
   }
-  console.log(!wallet || !folders.name)
   useEffect(() => {
     link.restoreSession('mydapp').then((session: any) => {
       if (session) {

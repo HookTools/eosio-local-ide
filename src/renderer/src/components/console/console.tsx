@@ -25,7 +25,7 @@ const Console = observer(() => {
     window.electron.ipcRenderer
       .invoke('getVersion')
       .then((data) => setVersion(data))
-      .catch((error_) => console.log(error_))
+      .catch((e) => console.log(e?.message))
   }, [])
   const [isConnected, setIsConnected] = useState(false)
   useEffect(() => {

@@ -18,7 +18,6 @@ export default function Parameters({ parametrs }) {
       .then((data) => setVersion(data))
       .catch((error) => console.log(error))
   }, [])
-  console.log(parametrs)
   return (
     <div>
       <CssVarsProvider>

@@ -16,7 +16,6 @@ export const Authorisation = observer(() => {
     connect,
     setConnect,
   } = storeWallets
-  console.log(wallet)
   const logout = () => {
     link.restoreSession('mydapp').then((session: any) => {
       if (session) {

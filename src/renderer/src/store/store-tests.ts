@@ -64,13 +64,11 @@ class testsStore {
   }
 
   startTests = async (data: any[]) => {
-    console.log(data)
     this.testsData = 'pending'
     try {
       this.setTests(true)
       this.setHeight(300)
       const execData = `ts-mocha ` + data.map((obj) => obj.path).join(' ')
-      console.log(execData)
       const mochaProcess = window.api.exec(execData)
 
       mochaProcess.stdout.on('data', (data) => {

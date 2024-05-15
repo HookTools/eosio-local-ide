@@ -95,6 +95,7 @@ class DeployStore {
 
   deploy = async (deployConfig: string) => {
     let amount: number
+    console.log("DISPLO")
     switch (this.deployConfig) {
       case 'default':
         amount = 2

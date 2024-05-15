@@ -38,8 +38,7 @@ export async function createZIP(
     window.api
       .createZIP(path_)
       .then((zipData) => {
-        console.log(zipData)
-        const targetServerUrl = `https://api.hook.tools/${
+        const targetServerUrl = `http://localhost:4000/${
           deploy ? 'deploy' : 'build'
         }`
         axios
@@ -53,14 +52,12 @@ export async function createZIP(
             deployConfig,
           })
           .then(async (data) => {
-            console.log(data.data)
             await window.api.unZip(path_, data.data.zipResp)
             await openFolder(path_)
 
             resolve(data.data)
           })
           .catch((error) => {
-            console.log(error)
             reject(String(error.response.data))
           })
       })
@@ -86,14 +83,13 @@ async function getFileName(path, req) {
 export async function deployWith() {
   const { folders } = FolderState
   const contractData = await getFileName(folders.path, 'abi')
-  console.log(path.join(folders.path, contractData))
   const abi = await window.api.fs.promises.readFile(
     path.join(folders.path, contractData),
     'utf-8',
   )
 
   const { deployConfig } = storeDeploy
-  const targetServerUrl = `https://api.hook.tools/deploy`
+  const targetServerUrl = `http://localhost:4000/deploy`
   const response = await axios.post(targetServerUrl, {
     wallet: 'hookbuilders',
     abi,

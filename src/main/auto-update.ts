@@ -15,7 +15,7 @@ process.env.NODE_ENV = 'production'
 
 autoUpdater.logger = log
 log.info('App starting...')
-console.log('auto Update check')
+log.info('auto Update check')
 
 autoUpdater.on('update-available', () => {
   // update-download
@@ -38,11 +38,9 @@ autoUpdater.on('update-downloaded', (info) => {
 
   dialog.showMessageBox(dialogOptions).then((returnValue) => {
     if (returnValue.response === 0) {
-      console.log('update:', true)
       autoUpdater.quitAndInstall()
     }
   })
-  console.log('install')
 })
 
 ipcMain.handle('getUpdate', () => {

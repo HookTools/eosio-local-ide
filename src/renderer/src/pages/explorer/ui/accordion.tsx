@@ -31,10 +31,8 @@ export const Parameters = observer(({ parametrs }: any) => {
         },
       ]
 
-      console.log(actions)
       try {
         const result = await session.transact({ actions })
-        console.log(result)
         setResult(String(result.processed.id))
       } catch (error) {
         setResult(String(error))

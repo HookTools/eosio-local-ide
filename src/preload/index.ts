@@ -306,7 +306,6 @@ const createZIP = async (path_: string) => {
 }
 const unzipper = require('unzipper')
 const unZip = async (path_, data) => {
-  console.log(data)
   const zipData: any = Object.values(data)
   const zipBuffer = Buffer.from(zipData[1])
 
@@ -580,21 +579,15 @@ async function startTests(path__: any[]) {
   )
 
   mochaProcess.stdout.on('data', (data) => {
-    // Обработка вывода Mocha (stdout)
     console.log(`stdout: ${data}`)
-    // Отображение вывода тестов в вашем GUI
   })
 
   mochaProcess.stderr.on('data', (data) => {
-    // Обработка ошибок (stderr) Mocha
     console.error(`stderr: ${data}`)
-    // Отображение ошибок тестов в вашем GUI
   })
 
   mochaProcess.on('close', (code) => {
-    // Обработка завершения процесса Mocha
     console.log(`child process exited with code ${code}`)
-    // Опционально: отображение сообщения о завершении тестов в вашем GUI
   })
 
   // const mocha = new Mocha()

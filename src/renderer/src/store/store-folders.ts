@@ -68,7 +68,6 @@ class FolderState {
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let i = 0; i < _folders.value.length; i++) {
         if (_folders.value[i].path === path) {
-          console.log(true)
           _folders.value.splice(i, 1)
           return
         }
@@ -135,7 +134,6 @@ class FolderState {
         if (
           _folders.value[i].path === `${path}/${_folders.value[i].lastName}`
         ) {
-          console.log(1)
           await renameAll(
             `${path}/${_folders.value[i].lastName}`,
             `${path}/${value}`,
@@ -151,7 +149,6 @@ class FolderState {
           return
         }
         if (_folders.value[i].path === `${path}/2@fafFn@famM9R$@!`) {
-          console.log(2)
           _folders.value[i].editName = false
           _folders.value[i].name = value
           _folders.value[i].path = `${path}/${value}`
@@ -195,8 +192,6 @@ class FolderState {
   }
 
   saveEdit = (path: string, name: string) => {
-    console.log(path)
-    console.log(name)
     const clone = Object.assign({}, this.folders)
     function searchFind(_folders: FoldersState) {
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
@@ -242,7 +237,6 @@ class FolderState {
     const path = this.chooseFolderPath
 
     if (this.folders.path === this.chooseFolderPath) {
-      console.log('based')
       clone.value.push({
         name: 'newFolder',
         isFolder: true,
@@ -259,7 +253,6 @@ class FolderState {
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let i = 0; i < _folders.value.length; i++) {
         if (_folders.value[i].path === path) {
-          console.log('done')
           _folders.value[i].value.push({
             name: 'newFolder',
             isFolder: true,
