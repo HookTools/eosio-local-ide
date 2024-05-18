@@ -22,7 +22,7 @@ import FoldersState from './store/store-folders'
 import DragAndDrop from './ui/dragAndDrop'
 
 const App = observer(() => {
-  const { currentTab, closeTab, chooseFolderPath } = FoldersState
+  const { currentTab, closeTab } = FoldersState
   useListener()
   const navigate = useNavigate()
   const [drag, setDrag] = useState(false)

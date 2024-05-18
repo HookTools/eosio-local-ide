@@ -17,7 +17,7 @@ export const FolderInput: FC<InputProps> = ({ data, path, ...props }) => {
         for (const names of resp) {
           if (names === inputValue) {
             reject()
-            return // Важно добавить return здесь, чтобы завершить функцию после reject
+            return 
           }
         }
         resolve({ path, value: inputValue })
@@ -37,7 +37,7 @@ export const FolderInput: FC<InputProps> = ({ data, path, ...props }) => {
               successPreCreateFolder(datas.path, datas.value)
             }
           })
-          .catch((error) => cancelPreCreate(data.path))
+          .catch(() => cancelPreCreate(data.path))
 
         document.removeEventListener('click', clickOutsideHandler)
       }

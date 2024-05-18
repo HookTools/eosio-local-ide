@@ -47,7 +47,6 @@ export const FolderButton: FC<ButtonProps> = ({
     deleteAll,
     editFile,
     changeChooseFolderPath,
-    chooseFolderPath,
   } = FolderState
   const [top, setTop] = useState(0)
   const [left, setLeft] = useState(0)

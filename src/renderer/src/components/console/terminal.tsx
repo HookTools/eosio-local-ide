@@ -27,7 +27,7 @@ export const Terminaled = ({ height }, props) => {
     term.loadAddon(fitAddon)
     fitAddon.fit()
     term.open(divRef.current)
-    term.resize(term.cols, 40) // Пример фиксированной высоты 40 строк
+    term.resize(term.cols, 40) 
     term.element.classList.add('transparent-background')
 
     fitAddon.fit()

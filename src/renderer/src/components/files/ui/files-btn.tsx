@@ -8,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   data: FoldersState
 }
 export const FilesButton: FC<ButtonProps> = ({ data, children, ...props }) => {
-  const { startEditName, deleteAll, editFile, changeChooseFolderPath } =
+  const { deleteAll, editFile, changeChooseFolderPath } =
     storeFolders
 
   const [top, setTop] = useState(0)

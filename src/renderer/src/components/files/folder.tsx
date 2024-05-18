@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Folder = observer(() => {
-  const { folders, addTab, changeChooseFolderPath } = FolderState
+  const { folders, changeChooseFolderPath } = FolderState
   const folderName = folders.name
   return (
     <div

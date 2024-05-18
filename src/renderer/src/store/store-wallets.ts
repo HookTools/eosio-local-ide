@@ -70,7 +70,7 @@ class StoreWallet {
         ],
       })
     }
-    this.connect = localStorage.getItem('connect') || 'anchor'
+    this.connect = localStorage.getItem('connect') as typeof this.connect || 'anchor'
   }
 
   setConnect = (data: 'anchor' | 'key') => {
@@ -160,7 +160,7 @@ class StoreWallet {
     }
   }
 
-  acceptMsig = async (abiData, wasmData, wallet) => {
+  acceptMsig = async (abiData, wasmData) => {
     await this.link.restoreSession('mydapp').then(async (session: any) => {
       const actions: any[] = [
         {
@@ -282,7 +282,7 @@ class StoreWallet {
         if (deployConfig === 'default') {
           deployModalDataHandler(1, 'Deploy contract...', false, amount)
 
-          await this.acceptMsig(abiData, wasmData, JSON.stringify(this.wallet))
+          await this.acceptMsig(abiData, wasmData)
         } else if (deployConfig === 'clean') {
           deployModalDataHandler(1, 'Deploy contract...', false, amount)
 
@@ -291,11 +291,10 @@ class StoreWallet {
 
           await this.acceptMsig(
             data[0].abi,
-            data[0].wasm,
-            JSON.stringify(this.wallet),
+            data[0].wasm
           )
           deployModalDataHandler(3, 'Deploy contract...', false, amount)
-          await this.acceptMsig(abiData, wasmData, JSON.stringify(this.wallet))
+          await this.acceptMsig(abiData, wasmData)
         } else if (deployConfig === 'migrate') {
           deployModalDataHandler(1, 'Build contract...', false, amount)
           const data = await deployWith()
@@ -303,17 +302,15 @@ class StoreWallet {
           await this.acceptMsig(
             data[0].abi,
             data[0].wasm,
-            JSON.stringify(this.wallet),
           )
           deployModalDataHandler(3, 'Migrate contract...', false, amount)
 
           await this.acceptMsig(
             data[1].abi,
             data[1].wasm,
-            JSON.stringify(this.wallet),
           )
           deployModalDataHandler(4, 'Deploy contract...', false, amount)
-          await this.acceptMsig(abiData, wasmData, JSON.stringify(this.wallet))
+          await this.acceptMsig(abiData, wasmData)
         }
       }
       deployModalDataHandler(10, 'Success', true)
@@ -328,7 +325,7 @@ class StoreWallet {
     const { deployModalDataHandler } = storeDeploy
     deployModalDataHandler(2, 'Deploy contract...')
     try {
-      if (this.wallet.privateKey) {
+      if (this.wallet?.privateKey) {
         await window.api.acceptMsigPrivate(
           data[0],
           JSON.stringify(this.wallet),
@@ -336,7 +333,7 @@ class StoreWallet {
         )
         deployModalDataHandler(10, 'Success', true)
       } else {
-        await this.acceptMsig(this.wallet.wallet, data[0])
+        await this.acceptMsig(this.wallet!.wallet, data[0])
         deployModalDataHandler(10, 'Success', true)
       }
     } catch (error) {
@@ -354,7 +351,7 @@ class StoreWallet {
     const { deployModalDataHandler } = storeDeploy
     deployModalDataHandler(2, 'Deploy clean contract...')
     try {
-      if (this.wallet.privateKey) {
+      if (this.wallet?.privateKey) {
         await window.api.acceptMsigPrivate(
           data[0],
           JSON.stringify(this.wallet),
@@ -374,13 +371,13 @@ class StoreWallet {
         )
         deployModalDataHandler(10, 'Success', true)
       } else {
-        await this.acceptMsig(this.wallet.wallet, data[0])
+        await this.acceptMsig(this.wallet!.wallet, data[0])
         deployModalDataHandler(3, 'Clean contract...')
         await sleep(1)
-        await this.cleanContract(this.wallet.wallet)
+        await this.cleanContract(this.wallet!.wallet)
         deployModalDataHandler(4, 'Deploy contract...')
         await sleep(1)
-        await this.acceptMsig(this.wallet.wallet, data[1])
+        await this.acceptMsig(this.wallet!.wallet, data[1])
         deployModalDataHandler(10, 'Success', true)
       }
     } catch (error) {

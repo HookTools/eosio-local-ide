@@ -8,14 +8,10 @@ import waxLogo from './assets/wax-logo.png'
 import { Terminaled } from './terminal'
 
 const Console = observer(() => {
-  const openConsole = () => {
-    setHeight(300)
-  }
   const [isPush, setIsPush] = useState(false)
   const [version, setVersion] = useState(null)
   const {
     testsResponse,
-    startTestsInFolder,
     height,
     setHeight,
     tests,
@@ -49,7 +45,7 @@ const Console = observer(() => {
       document.addEventListener('mouseup', handleMouseUp, { once: true })
     }
 
-    button.addEventListener('mousedown', handleMouseDown)
+    button!.addEventListener('mousedown', handleMouseDown)
   }, [])
 
   useEffect(() => {
@@ -77,7 +73,6 @@ const Console = observer(() => {
                 1
               </button>
             )}
-            {/* <button onClick={openConsole}>open</button> */}
             <p>v{version}</p>
             <ConnectSvg width={20} fill={isConnected ? 'green' : 'red'} />
           </div>

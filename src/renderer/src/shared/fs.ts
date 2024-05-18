@@ -103,7 +103,7 @@ export async function deployWith() {
 async function readFolder(path: string) {
   try {
     const resp: string[] = await window.api.fs.readdirSync(path)
-    const files = []
+    const files:any[] = []
     for (const [i, element] of resp.entries()) {
       files[i] = await readFolder(`${path}/${element}`)
     }
@@ -113,7 +113,7 @@ async function readFolder(path: string) {
       tabs: [],
       isFolder: true,
       value: files
-        .sort((a: any, b: any) => {
+        .sort((a: any) => {
           if (a.isFolder) return -1
         })
         .filter((post: any) => post.name[0] !== '.'),
@@ -131,7 +131,7 @@ async function readFolder(path: string) {
 export const openFolder = async (path) => {
   const { addFolder } = FolderState
   const resp = await readFolder(path)
-  resp.value.sort((a, b) => {
+  resp.value.sort((a) => {
     if (a.isFolder) return -1
   })
   addFolder(resp)

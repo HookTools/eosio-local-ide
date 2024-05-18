@@ -20,16 +20,14 @@ class DeployStore {
   error = null
   errorIsVisible = false
   deployConfig: 'default' | 'clean' | 'migrate' | 'tests'
-
+  deployCode:string = ''
   deployModalData: DeployModal | null = null
 
   constructor() {
     makeAutoObservable(this)
     this.autoCompile = localStorage.getItem('autocompile') === 'true'
     this.hideWarning = localStorage.getItem('hidewarnings') === 'true'
-    this.deployConfig = localStorage.getItem('deployconfig')
-      ? localStorage.getItem('deployconfig')
-      : 'default'
+    this.deployConfig = localStorage.getItem('deployconfig') as typeof this.deployConfig || 'default'
     const buildCode = localStorage.getItem('buildCode')
     this.buildCode =
       buildCode ||
@@ -70,7 +68,7 @@ class DeployStore {
   }
 
   closeModalData = () => {
-    if (this.deployModalData.isSuccess) {
+    if (this.deployModalData?.isSuccess) {
       this.deployModalData = null
     }
   }
@@ -95,7 +93,6 @@ class DeployStore {
 
   deploy = async (deployConfig: string) => {
     let amount: number
-    console.log("DISPLO")
     switch (this.deployConfig) {
       case 'default':
         amount = 2

@@ -9,7 +9,7 @@ interface Tabs {
   choose?: boolean
 }
 export interface FoldersState {
-  name: string
+  name: string | null
   value: FoldersState[]
   path: string
   isOpen?: boolean
@@ -65,7 +65,6 @@ class FolderState {
     await window.api.deleteAll(path)
     const clone = Object.assign({}, this.folders)
     function searchFind(_folders: FoldersState) {
-      // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let i = 0; i < _folders.value.length; i++) {
         if (_folders.value[i].path === path) {
           _folders.value.splice(i, 1)
@@ -221,7 +220,7 @@ class FolderState {
       for (let i = 0; i < _folders.value.length; i++) {
         if (_folders.value[i].path === path) {
           _folders.value[i].editName = true
-          _folders.value[i].lastName = _folders.value[i].name
+          _folders.value[i].lastName = _folders.value[i].name as string
           _folders.value[i].editFile = true
           return
         }
@@ -361,7 +360,7 @@ class FolderState {
     const tabs = this.tabs.slice()
     const file = tabs.find((post) => post.path === path)
     file!.save = false
-    fsSaveFile(path, file.data)
+    fsSaveFile(path, file!.data)
     this.tabs = tabs
   }
 

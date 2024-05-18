@@ -1,6 +1,5 @@
 import { $api } from '@renderer/shared/api/api'
-import axios from 'axios'
-import { makeAutoObservable, computed } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import storeWallets from './store-wallets'
 
 interface Abi {
