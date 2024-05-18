@@ -23,7 +23,11 @@
 ### Github release - https://github.com/HookTools/EOSIO-LOCAL-IDE/releases/tlatest
 ### Website - https://hook.tools
 ## or launch with npm or yarn
+
+```
 For install u should have python and cmake on your pc
+```
+
 ### npm:
 ```sh
 npm install
