@@ -42,10 +42,3 @@ yarn start
 #### Windows - 10, 11
 #### macOS with apple chip
 #### Linux - Ubuntu 18+
-
-## Labs Note:
-
-#### Video - https://www.youtube.com/watch?v=9sqvWSeriU0
-#### In the final release, we will add code signing for windows and macOS so you don't get a warning when installing.
-
-#### We have developed code migration and contract cleanup without your latest smart contract using your latest and next smart contract ABI. We will also publish it after fully testing.
