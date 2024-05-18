@@ -25,7 +25,7 @@
 ## or launch with npm or yarn
 
 ```
-For install u should have python and cmake on your pc
+To install it, you must have python and cmake installed.
 ```
 
 ### npm:
