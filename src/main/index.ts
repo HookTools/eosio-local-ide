@@ -61,7 +61,7 @@ function createWindow(): void {
   ipcMain.handle('getFile', async (e, name: string, toPath: string) => {
     const filePath = path.join(process.resourcesPath, 'smartcontracts', name)
     try {
-      const resp = fsExtra.copySync(filePath, toPath)
+      const resp = fsExtra.copySync(filePath, toPath.replace(`\\`,'/'))
       return resp
     } catch (error) {
       console.error('Error copying folder:', error)
