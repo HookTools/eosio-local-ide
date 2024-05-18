@@ -20,7 +20,7 @@
 
 
 ## Install aplication on your OS 
-### Github release - https://github.com/HookTools/EOSIO-LOCAL-IDE/releases/tlatest
+### Github release - https://github.com/HookTools/EOSIO-LOCAL-IDE/releases/latest
 ### Website - https://hook.tools
 ## or launch with npm or yarn
 
