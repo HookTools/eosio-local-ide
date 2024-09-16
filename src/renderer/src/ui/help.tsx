@@ -1,4 +1,3 @@
-import React from 'react'
 import { getFolderPath, openFolder } from '../shared/fs'
 
 export const Help = () => {

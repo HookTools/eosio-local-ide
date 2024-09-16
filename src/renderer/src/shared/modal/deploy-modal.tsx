@@ -6,7 +6,6 @@ import './loader.css'
 
 export const DeployModal = observer(() => {
   const { deployModalData, closeModalData } = storeDeploy
-  console.log(deployModalData)
   function createArrayFromNumber(number) {
     if (typeof number !== 'number' || number <= 0) {
       return []

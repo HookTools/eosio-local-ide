@@ -115,6 +115,7 @@ async function readFolder(path: string) {
       value: files
         .sort((a: any) => {
           if (a.isFolder) return -1
+          return 0
         })
         .filter((post: any) => post.name[0] !== '.'),
     }
@@ -133,6 +134,7 @@ export const openFolder = async (path) => {
   const resp = await readFolder(path)
   resp.value.sort((a) => {
     if (a.isFolder) return -1
+    return 0
   })
   addFolder(resp)
 }

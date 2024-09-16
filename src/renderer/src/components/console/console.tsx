@@ -1,8 +1,7 @@
-import { deployWith } from '@renderer/shared/fs'
 import storeDeploy from '@renderer/store/store-deploy'
 import storeTests from '@renderer/store/store-tests'
 import { observer } from 'mobx-react-lite'
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { ConnectSvg } from './assets/connect'
 import waxLogo from './assets/wax-logo.png'
 import { Terminaled } from './terminal'
@@ -53,7 +52,8 @@ const Console = observer(() => {
       setIsConnected(navigator.onLine)
     }, 10000)
   }, [])
-  const { error, build, setErrorIsVisible } = storeDeploy
+
+  const { build, setErrorIsVisible } = storeDeploy
   return (
     <div
       style={{ minHeight: '20px' }}

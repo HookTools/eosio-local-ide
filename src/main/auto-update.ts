@@ -44,7 +44,7 @@ autoUpdater.on('update-downloaded', (info) => {
 })
 
 ipcMain.handle('getUpdate', () => {
-  return new Promise((resolve, reject) => {
-    autoUpdater.checkForUpdatesAndNotify()
+  return new Promise((resolve) => {
+    resolve(autoUpdater.checkForUpdatesAndNotify())
   })
 })

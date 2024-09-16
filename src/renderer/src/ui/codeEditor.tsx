@@ -12,7 +12,7 @@ import 'ace-builds/src-noconflict/mode-tsx'
 import 'ace-builds/src-noconflict/mode-typescript'
 import 'ace-builds/src-noconflict/theme-monokai'
 import { observer } from 'mobx-react-lite'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AceEditor from 'react-ace'
 import FolderState from '../store/store-folders'
 import storeFolders from '../store/store-folders'
@@ -92,12 +92,6 @@ const CodeEditor = observer(({ data, choose }: Props) => {
             }
 
             matca.push(markerRange)
-            // editor.session.addMarker(
-            //   markerRange,
-            //   'highlightError',
-            //   'screenLine',
-            //   true
-            // )
           }
         } else {
           continue
@@ -110,7 +104,7 @@ const CodeEditor = observer(({ data, choose }: Props) => {
   const { changeFile } = FolderState
   const text = data.data
   const fileType = data.name.split('.').pop()
-  const onChange = (value, viewUpdate) => {
+  const onChange = (value, _) => {
     changeFile(path, value)
   }
   useEffect(() => {
@@ -157,9 +151,6 @@ const CodeEditor = observer(({ data, choose }: Props) => {
     langTools.addCompleter(sqlTablesCompleter)
 
     const editor = ace.edit(id)
-
-    //search start
-    // editor.execCommand('find')
 
     editor.commands.addCommand({
       name: 'showFind',

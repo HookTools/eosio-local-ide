@@ -70,12 +70,11 @@ const deployPrivate = async (
         blocksBehind: 3,
         expireSeconds: 30,
       },
-    )
+    ) as any
 
-    return `'Transaction ID:', ${result.transaction_id}`
+    return `'Transaction ID:', ${result?.transaction_id}`
   } catch (error) {
     if (error instanceof RpcError) {
-      const errorJson = error?.json
       throw new Error(error?.json?.error?.what)
     } else {
       throw new Error(`'An error occurred' ${error}`)
@@ -204,14 +203,13 @@ const pushTransactionPrivate = async (
   }
 }
 const cleanContract = async (wallet_, rpcURL: string) => {
-  const { Api, JsonRpc, RpcError, Serialize } = require('eosjs')
+  const { Api, JsonRpc, RpcError } = require('eosjs')
   const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig')
   const { TextDecoder, TextEncoder } = require('util') // node only
 
   const wallet = JSON.parse(wallet_)
   const rpc = new JsonRpc(rpcURL, { fetch })
   const signatureProvider = new JsSignatureProvider([wallet.privateKey])
-  const info = await rpc.get_info()
 
   // Create an API instance
   const api = new Api({
@@ -589,49 +587,3 @@ async function startTests(path__: any[]) {
   mochaProcess.on('close', (code) => {
     console.log(`child process exited with code ${code}`)
   })
-
-  // const mocha = new Mocha()
-  // const response: unknown[] = []
-
-  // mocha.suite.beforeEach(function () {
-  //   if (this.currentTest) {
-  //     response.push(`Start: "${this.currentTest.title}"`)
-  //   }
-  // })
-
-  // mocha.suite.afterEach(function () {
-  //   if (this.currentTest) {
-  //     response.push(`End: ${this.currentTest.title}`)
-  //   }
-  // })
-
-  // for (const path_ of path__) {
-  //   mocha.addFile(path_.path)
-  // }
-
-  // try {
-  //   const data = await new Promise((resolve, reject) => {
-  //     const runner = mocha.run((failures) => {
-  //       const testResults = {
-  //         totalTests: runner.total,
-  //         passed: runner.total - failures,
-  //         failed: failures,
-  //       }
-  //       response.push(testResults)
-  //       resolve(response)
-  //     })
-
-  //     runner.on('fail', (test, err) => {
-  //       response.push(err)
-  //       reject(response)
-  //     })
-  //   })
-  //   console.log('return')
-  //   yield response
-  // } catch (error) {
-  //   console.log('return error')
-
-  //   response.push(error)
-  //   yield response
-  // }
-}

@@ -16,7 +16,7 @@ export default function Parameters({ parametrs }) {
     window.electron.ipcRenderer
       .invoke('getVersion')
       .then((data) => setVersion(data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.error(error))
   }, [])
   return (
     <div>
